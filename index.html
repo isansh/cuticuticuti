@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Побачення?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: pink;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #cat {
+      width: 150px;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .question-box {
+      text-align: center;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff69b4;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2em;
+      background-color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      background-color: #ffe6f0;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="cat" src="/115112551af7b9e2cd17e4c27ee2bf63.gif" alt="котик">
+
+  <div class="question-box" id="box">
+    <h1 id="text">Підеш зі мною на побачення?</h1>
+    <button class="btn" onclick="yes()">Так</button>
+    <button class="btn" onclick="yes()">Так</button>
+  </div>
+
+  <script>
+    const cat = document.getElementById('cat');
+    const box = document.getElementById('box');
+    const text = document.getElementById('text');
+
+    function yes() {
+      cat.src = "/nRm.gif";
+
+      text.textContent = "люблю тебе";
+
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(btn => btn.remove());
+
+      const interval = setInterval(() => {
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 150);
+        cat.style.left = `${x}px`;
+        cat.style.top = `${y}px`;
+      }, 300);
+
+      setTimeout(() => clearInterval(interval), 5000);
+    }
+  </script>
+
+</body>
+</html>
